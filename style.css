@@ -1,0 +1,30 @@
+body {
+    font-family: Noto Sans JP;
+    font-size: 16px;
+    line-height: 1.5;
+    color: black;
+    /*add some padding on the top to create space for fixed header*/
+    padding-top: 30px;
+    padding-left: 20px;
+    width: 75%;
+  }
+
+header{
+  position: fixed;
+  top: 20;
+  left: 20;
+  width: 100%;
+  padding: 40px;
+  /*flexbox is a modern css layout mode that gives us much more power over how elements are positioned*/
+  /*
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  */
+}
+
+h1 {
+  font-size: 20px;
+  font-family: Noto Sans JP;
+  font-weight: 800;
+}
