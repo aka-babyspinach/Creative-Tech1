@@ -28,7 +28,10 @@ h1 {
   font-size: 20px;
   font-family: 'Roboto Mono';
   font-weight: 800;
-  background-color: lightgreen;
+}
+
+span{
+  background-color: limegreen;
 }
 
 h2{
@@ -45,12 +48,13 @@ h3{
   font-family: 'Roboto Mono';
   font-style: italic;
   font-weight: 500;
-  color: green;
+  color: limegreen;
   font-size: 16px;
 }
 
 div{
   padding-top: 40px;
+  display: inline-block;
 }
 
 p{
@@ -58,6 +62,6 @@ p{
 }
 
 .Reading {
-  width: 350 px;
+  max-width: 350 px;
   padding: 20px;
 }
