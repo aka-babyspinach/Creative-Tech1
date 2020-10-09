@@ -6,8 +6,8 @@ body {
     color: black;
     /*add some padding on the top to create space for fixed header*/
     padding-top: 30px;
-    padding-left: 100px;
-    width: 500px;
+    padding-left: 150px;
+    width: 700px;
   }
 
 header{
@@ -26,25 +26,38 @@ header{
 
 h1 {
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Mono';
   font-weight: 800;
+  background-color: lightgreen;
 }
 
 h2{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono';
     font-size: 16px; 
 }
 
 img {
-  max-width: 500px;;
+  max-width: 700px;;
   height: auto;
 }
 
 h3{
+  font-family: 'Roboto Mono';
   font-style: italic;
   font-weight: 500;
   color: green;
+  font-size: 16px;
 }
+
 div{
   padding-top: 40px;
+}
+
+p{
+  font-family: 'Roboto';
+}
+
+.Reading {
+  width: 350 px;
+  padding: 20px;
 }
