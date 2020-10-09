@@ -63,6 +63,7 @@ p{
 
 div.Reading {
   display:inline-flexbox;
+  grid-auto-flow: column;
   width: 330 px;
   padding: 5 px;
 }
