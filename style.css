@@ -7,7 +7,7 @@ body {
     /*add some padding on the top to create space for fixed header*/
     padding-top: 30px;
     padding-left: 150px;
-    width: 700px;
+    width: 720px;
   }
 
 header{
@@ -40,7 +40,7 @@ h2{
 }
 
 img {
-  max-width: 700px;;
+  max-width: 720px;;
   height: auto;
 }
 
@@ -54,7 +54,7 @@ h3{
 
 div{
   padding-top: 40px;
-  display: inline;
+  padding-bottom: 40px;
 }
 
 p{
@@ -62,6 +62,7 @@ p{
 }
 
 .Reading {
+  display:inline-flexbox;
   max-width: 350 px;
-  padding: 20px;
+  padding: 5 px;
 }
