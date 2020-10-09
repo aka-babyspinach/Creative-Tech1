@@ -62,7 +62,7 @@ p{
 }
 
 div.Reading {
-  display:inline-block;
+  display:inline-flexbox;
   width: 330 px;
   padding: 5 px;
 }
