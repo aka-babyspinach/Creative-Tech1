@@ -61,8 +61,8 @@ p{
   font-family: 'Roboto';
 }
 
-.Reading {
-  display:inline-flexbox;
+div.Reading {
+  display:inline-block;
   max-width: 350 px;
   padding: 5 px;
 }
