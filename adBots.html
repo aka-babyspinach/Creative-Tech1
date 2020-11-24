@@ -13,46 +13,6 @@
         let URL = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=7f07ab5032155ef163315d3180d71d9a52d2bfcf"
         let data = "";
         let currentTime, prevTime;
-        let value = 10;
-
-        function setup() {
-            createCanvas(400, 400);
-        }
-
-        function draw() {
-            background(255);
-
-            currentTime = millis() % 1000;
-            if (currentTime < prevTime) {
-                data = loadJSON(URL, processData);
-
-            }
-            fill(255, 0, 0);
-            circle(width / 2, height / 2, value);
-
-
-            //parseInt(data.result);
-            prevTime = currentTime;
-        }
-
-        function processData(data) {
-            console.log(data.result);
-            value = map(parseInt(data.result), 0, 4096, 0, width);
-            console.l<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tracking_spinach_connect</title>
-</head>
-
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script>
-        let URL = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=7f07ab5032155ef163315d3180d71d9a52d2bfcf"
-        let data = "";
-        let currentTime, prevTime;
         let value = 30;
         let img;
         let capture;
@@ -73,26 +33,20 @@
             currentTime = millis() % 1000;
             if (currentTime < prevTime) {
                 data = loadJSON(URL, processData);
-                
+
             }
             fill(255, 0, 0);
             circle(width / 2, height / 2, value);
-            
+
 
             //parseInt(data.result);
             prevTime = currentTime;
         }
 
-        function processData(data){
+        function processData(data) {
             console.log(data.result);
             value = map(parseInt(data.result), 0, 4096, 0, width);
             console.log(value);
-        }
-
-    </script>
-</body>
-
-</html>og(value);
         }
 
     </script>
