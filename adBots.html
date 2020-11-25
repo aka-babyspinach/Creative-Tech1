@@ -13,22 +13,14 @@
         let URL = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=7f07ab5032155ef163315d3180d71d9a52d2bfcf"
         let data = "";
         let currentTime, prevTime;
-        let value = 30;
-        let img;
-        let capture;
+        let value = 10;
 
         function setup() {
-            createCanvas(900, 600);
-            img = loadImage('background1.jpg');
-            capture = createCapture(VIDEO);
-            capture.size(320, 240);
-            //capture.hide();
+            createCanvas(400, 400);
         }
 
         function draw() {
-            //background(255);
-            image(img, 0, 0, width, height);
-            image(capture, 100, 150, 360, 240);
+            background(255);
 
             currentTime = millis() % 1000;
             if (currentTime < prevTime) {
