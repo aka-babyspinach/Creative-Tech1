@@ -19,19 +19,19 @@
             let value = 10;
 
             function setup() {
-                //createCanvas(400, 400);
+                createCanvas(400, 400);
             }
 
             function draw() {
-                //background(255);
+                background(255);
 
                 currentTime = millis() % 1000;
                 if (currentTime < prevTime) {
                     data = loadJSON(URL, processData);
                 }
 
-                // fill(255, 0, 0);
-                // circle(width / 2, height / 2, value);
+                fill(255, 0, 0);
+                circle(width / 2, height / 2, value);
 
 
                 //parseInt(data.result);
