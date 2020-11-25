@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tracking_spinach_connect</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="boid.js"></script>
+    <script src="sketch.js"></script>
+
+    <script>
+        let URL = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=ab43326b5e198c725060d07f3c43d4666db7f6c5"
+         let data = "";
+            let currentTime, prevTime;
+            let value = 10;
+
+            function setup() {
+                //createCanvas(400, 400);
+            }
+
+            function draw() {
+                //background(255);
+
+                currentTime = millis() % 1000;
+                if (currentTime < prevTime) {
+                    data = loadJSON(URL, processData);
+                }
+
+                // fill(255, 0, 0);
+                // circle(width / 2, height / 2, value);
+
+
+                //parseInt(data.result);
+                prevTime = currentTime;
+            }
+
+            function processData(data) {
+                console.log(data.result);
+                value = map(parseInt(data.result), 0, 4096, 0, width);
+                console.log(value);
+            }
+    </script>
+</body>
+
+</html>
