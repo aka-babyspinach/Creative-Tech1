@@ -8,6 +8,10 @@ class Boid {
         this.acceleration = createVector();
         this.maxForce = 1; //the smaller number the faster, the bigger less sticky, bigger movements
         this.maxSpeed = 4;
+
+        let ad = random(ads);
+        this.ads = ad;
+        this.w = random(30, 60);
     }
 
 
@@ -149,7 +153,7 @@ class Boid {
     show() {
         strokeWeight(8);
         stroke(255);
-        //image(ads[0], this.position.x, this.position.y, 80, 60);
-        point(this.position.x, this.position.y)
+        image(this.ads, this.position.x, this.position.y, this.w, this.w * 1.485);
+        //point(this.position.x, this.position.y)
     }
 } 
