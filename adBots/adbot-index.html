@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tracking_spinach_connect</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="boid.js"></script>
+    <script>
+        let URL1 = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=ab43326b5e198c725060d07f3c43d4666db7f6c5"
+        let URL2 = "https://api.particle.io/v1/devices/2b0023001847393035313138/light_value?access_token=ab43326b5e198c725060d07f3c43d4666db7f6c5"
+        let data1 = "";
+        let data2 = "";
+        let currentTime, prevTime;
+        let value1 = 0.1;
+        let value2 = 0.1;
+
+        const flock = [];
+        let alignSlider, cohesionSlider, separationSlider;
+        let ads = [];
+
+
+        // function preload() {
+        //         //img = loadImage('images/1.png');
+        //         ads[0] = loadImage('images/ad0.png');
+        //         // ads[1] = loadImage('images/ad1.png');
+        //         // ads[2] = loadImage('images/ad2.png');
+        //         // ads[3] = loadImage('images/ad3.png');
+        //     }
+
+
+        function setup() {
+            createCanvas(800, 720);
+            for (i = 0; i<4; i++){
+               ads[i] = loadImage('images/ad' + i +'.png');
+            }
+          
+            alignSlider = createSlider(0, 5, 1, 0.1); //(slider min value, slider max value, starter value, increrment value)
+            //cohesionSlider = createSlider(0, 5, 1, 0.1);
+           // separationSlider = createSlider(0, 5, 1, 0.1);
+            separationSlider = value2;
+            cohesionSlider = value1;
+           
+            
+
+            for (let i = 0; i < 100; i++) {
+
+                flock.push(new Boid());
+            }
+        }
+
+        function draw() {
+            background(50);
+
+            currentTime = millis() % 1000;
+            if (currentTime < prevTime) {
+                data1 = loadJSON(URL1, processData1);
+                data2 = loadJSON(URL2, processData2);
+            }
+
+            for (let boid of flock) {
+                boid.edges();
+                boid.flock(flock);
+                boid.update();
+                boid.show();
+            }
+
+            // fill(255, 0, 0);
+            // circle(width / 2, height / 2, value);
+            
+
+            parseInt(data1.result);
+            parseInt(data2.result);
+            prevTime = currentTime;
+        }
+
+        function processData1(data1){
+            console.log(data1.result);
+            value1 = map(parseInt(data1.result), 0, 4096, 0, 5);
+            console.log(value1);
+            value1.push;
+        }
+
+        function processData2(data2) {
+                console.log(data2.result);
+                value2 = map(parseInt(data2.result), 0, 4096, 0, 5);
+                console.log(value2);
+                value2.push;
+            }
+
+    </script>
+</body>
+
+</html>

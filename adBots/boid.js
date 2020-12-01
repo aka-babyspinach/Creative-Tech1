@@ -1,7 +1,6 @@
 class Boid {
 
 
-
     constructor() {
         this.position = createVector(random(width), random(height));
         this.velocity = p5.Vector.random2D();//give you a random velocity factor, unified number with different directions
@@ -123,8 +122,10 @@ class Boid {
         let cohesion = this.cohesion(boids);
         let separation = this.separation(boids);
 
-        separation.mult(separationSlider.value());
-        cohesion.mult(cohesionSlider.value());
+        separation.mult(value2);
+        //separation.mult(separationSlider.value());
+        cohesion.mult(value1);
+        //cohesion.mult(cohesionSlider.value());
         alignment.mult(alignSlider.value());
 
 
@@ -148,6 +149,7 @@ class Boid {
     show() {
         strokeWeight(8);
         stroke(255);
+        //image(ads[0], this.position.x, this.position.y, 80, 60);
         point(this.position.x, this.position.y)
     }
 } 
