@@ -9,29 +9,46 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script src="adBots/boid.js"></script>
-    <script src="adBots/sketch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+    <script src="boid.js"></script>
+  
 
     <script>
         let URL = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=ab43326b5e198c725060d07f3c43d4666db7f6c5"
          let data = "";
             let currentTime, prevTime;
             let value = 10;
+            const flock = [];
+            let alignSlider, cohesionSlider, separationSlider;
 
             function setup() {
-                createCanvas(400, 400);
+               createCanvas(800, 720);
+                alignSlider = createSlider(0, 5, 1, 0.1); //(slider min value, slider max value, starter value, increrment value)
+                cohesionSlider = createSlider(0, 5, 1, 0.1);
+                separationSlider = createSlider(0, 5, 1, 0.1);
+                for (let i = 0; i < 100; i++) {
+                    flock.push(new Boid());
+                }
             }
 
             function draw() {
-                background(255);
+                background(200);
+
+                //for every boid in the flock, delcare boid in for loop
+                for (let boid of flock) {
+                    boid.edges();
+                    boid.flock(flock);
+                    boid.update();
+                    boid.show();
+                }
 
                 currentTime = millis() % 1000;
                 if (currentTime < prevTime) {
                     data = loadJSON(URL, processData);
                 }
 
-                fill(255, 0, 0);
-                circle(width / 2, height / 2, value);
+                // fill(255, 0, 0);
+                // circle(width / 2, height / 2, value);
 
 
                 //parseInt(data.result);
