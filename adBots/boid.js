@@ -153,7 +153,7 @@ class Boid {
     show() {
         strokeWeight(8);
         stroke(255);
-        image(this.ads, this.position.x, this.position.y, this.w, this.w * 1.485);
-        //point(this.position.x, this.position.y)
+        //image(this.ads, this.position.x, this.position.y, this.w, this.w * 1.485);
+        point(this.position.x, this.position.y)
     }
 } 
