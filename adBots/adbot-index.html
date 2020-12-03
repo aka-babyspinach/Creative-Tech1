@@ -30,21 +30,27 @@
         let ads = [];
 
 
-        function preload() {
-            ads[0] = loadImage('images/ad0.png');
+        // function preload() {
+        //     ads[0] = loadImage('images/ad0.png');
+        //     ads[1] = loadImage('images/ad1.png');
+        //     ads[2] = loadImage('images/ad2.png');
+        //     ads[3] = loadImage('images/ad3.png');
+        //     ads[4] = loadImage('images/ad4.png');
+        //     ads[5] = loadImage('images/ad5.png');
+
+        // }
+
+
+        function setup() {
+            createCanvas(800, 720);
+             ads[0] = loadImage('images/ad0.png');
             ads[1] = loadImage('images/ad1.png');
             ads[2] = loadImage('images/ad2.png');
             ads[3] = loadImage('images/ad3.png');
             ads[4] = loadImage('images/ad4.png');
             ads[5] = loadImage('images/ad5.png');
-
-        }
-
-
-        function setup() {
-            createCanvas(800, 720);
             // for (i = 0; i<4; i++){
-            //    ads[i] = loadImage('images/ad' + i +'.png');
+            //    ads[i] = loadImage('images/ad!{i}.png');
             // }
 
             alignSlider = createSlider(0, 5, 1, 0.1); //(slider min value, slider max value, starter value, increrment value)
@@ -101,7 +107,7 @@
 
         function processData_Kate(data_Kate) {
             console.log(data_Kate.result);
-            value_Kate = map(parseInt(data_Kate.result), 1300, 2200, 10, 100);
+            value_Kate = map(parseInt(data_Kate.result), 1300, 2200, 50, 100);
             //value_Kate = parseInt(data_Kate.result);
             console.log(value_Kate);
         }
