@@ -9,8 +9,8 @@ class Boid {
         this.maxForce = 1; //the smaller number the faster, the bigger less sticky, bigger movements
         this.maxSpeed = 4;
 
-        let ad = random(ads);
-        this.ads = ad;
+        let r = random(5);
+        this.ads = ads[r];
         this.w = random(30, 60);
     }
 
