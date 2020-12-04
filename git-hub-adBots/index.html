@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tracking_spinach_connect</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="boid.js"></script>
+    <script>
+
+        let URL1 = "https://api.particle.io/v1/devices/2b0023001847393035313138/pot_value?access_token=8a893ac6e6e7374716f9fc7f41ddc9f3aa0a8631"
+            let URL2 = "https://api.particle.io/v1/devices/2b0023001847393035313138/light_value?access_token=8a893ac6e6e7374716f9fc7f41ddc9f3aa0a8631"
+            let URL_Kate = "https://api.particle.io/v1/devices/3b0034000147393033373334/therm_value?access_token=8a893ac6e6e7374716f9fc7f41ddc9f3aa0a8631"
+            // let URL_Isa = "https://api.particle.io/v1/devices/22003e000c47373336323230/flex_value?access_token=a137a1d607d1c8e92de9f6599f91123fe2df4a65"
+
+            let data1 = "";
+            let data2 = "";
+            let data_Kate = "";
+            let data_Isa = "";
+
+            let value1 = 0.1;
+            let value2 = 0.1;
+            let value_Kate = 0;
+            let value_Isa = 0.3
+
+            let currentTime, prevTime;
+
+            const flock = [];
+            let alignSlider, cohesionSlider, separationSlider;
+            let ads = [];
+
+
+            function preload() {
+                ads[0] = loadImage('images/ad0.png');
+                ads[1] = loadImage('images/ad1.png');
+                ads[2] = loadImage('images/ad2.png');
+                ads[3] = loadImage('images/ad3.png');
+                ads[4] = loadImage('images/ad4.png');
+                ads[5] = loadImage('images/ad5.png');
+
+            }
+
+
+            function setup() {
+                createCanvas(800, 720);
+                // for (i = 0; i<4; i++){
+                //    ads[i] = loadImage('images/ad' + i +'.png');
+                // }
+
+                //  alignSlider = value_Isa; //(slider min value, slider max value, starter value, increrment value)
+                // // cohesionSlider = createSlider(0, 5, 1, 0.1);
+                // // separationSlider = createSlider(0, 5, 1, 0.1);
+                //  separationSlider = value2;
+                //  cohesionSlider = value1;
+
+
+
+                for (let i = 0; i < 100; i++) {
+
+                    flock.push(new Boid());
+                }
+            }
+
+            function draw() {
+                console.log("kate_value: " + value_Kate);
+                console.log("pot_value: " + value1);
+                console.log("light_value: " + value2);
+                background(255, 255 - value_Kate, value_Kate);
+                currentTime = millis() % 1500;
+                if (currentTime < prevTime) {
+                    data1 = loadJSON(URL1, processData1, handleError);
+                    data2 = loadJSON(URL2, processData2, handleError);
+                    data_Kate = loadJSON(URL_Kate, processData_Kate, handleError);
+                    //data_Isa = loadJSON(URL_Isa, processData_Isa, handleError);
+                }
+
+
+                for (let boid of flock) {
+                    boid.edges();
+                    boid.flock(flock);
+                    boid.update();
+                    boid.show();
+                }
+
+                // fill(255, 0, 0);
+                // circle(width / 2, height / 2, value);
+
+
+                parseInt(data1.result);
+                parseInt(data2.result);
+                prevTime = currentTime;
+            }
+
+            function processData1(data1) {
+                console.log(data1.result);
+                value1 = map(parseInt(data1.result), 0, 4096, 0, 5);
+                console.log(value1);
+            }
+
+            function processData2(data2) {
+                console.log(data2.result);
+                value2 = map(parseInt(data2.result), 0, 4096, 0, 5);
+                console.log(value2);
+            }
+
+            function processData_Kate(data_Kate) {
+                console.log(data_Kate.result);
+                value_Kate = map(parseInt(data_Kate.result), 1300, 2200, 0, 255);
+                //value_Kate = parseInt(data_Kate.result);
+                console.log(value_Kate);
+            }
+
+            // function processData_Isa(data_Isa) {
+            //         console.log(data_Isa.result);
+            //         value_Isa = map(parseInt(data_Isa.result), 1000, 2200, 0, 255);
+            //         console.log(value_Isa);
+            //     }
+
+            function handleError(error) {
+                console.log(error);
+            }
+
+    </script>
+</body>
+
+</html>

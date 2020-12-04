@@ -9,8 +9,8 @@ class Boid {
         this.maxForce = 1; //the smaller number the faster, the bigger less sticky, bigger movements
         this.maxSpeed = 4;
 
-        //let randomad = random(ads);
-        this.ads = ads[0]; 
+        let ad = random(ads);
+        this.ads = ad;
         this.w = random(30, 60);
     }
 
@@ -130,7 +130,7 @@ class Boid {
         //separation.mult(separationSlider.value());
         cohesion.mult(value1);
         //cohesion.mult(cohesionSlider.value());
-        alignment.mult(alignSlider.value());
+        alignment.mult(value_Isa);
 
 
         this.acceleration.add(separation);
@@ -154,6 +154,6 @@ class Boid {
         strokeWeight(8);
         stroke(255);
         image(this.ads, this.position.x, this.position.y, this.w, this.w * 1.485);
-       // point(this.position.x, this.position.y)
+        //point(this.position.x, this.position.y)
     }
 } 
